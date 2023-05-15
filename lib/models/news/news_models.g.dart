@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'news_models.dart';
 
 // **************************************************************************
@@ -10,10 +8,18 @@ part of 'news_models.dart';
 
 _$_NewsModels _$$_NewsModelsFromJson(Map<String, dynamic> json) =>
     _$_NewsModels(
-      news: json['news'] as String?,
+      author: json['author'] as String?,
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+      url: json['url'] as String?,
+      urlToImage: json['urlToImage'] as String?,
     );
 
 Map<String, dynamic> _$$_NewsModelsToJson(_$_NewsModels instance) =>
     <String, dynamic>{
-      'news': instance.news,
+      'author': instance.author,
+      'title': instance.title,
+      'description': instance.description,
+      'url': instance.url,
+      'urlToImage': instance.urlToImage,
     };

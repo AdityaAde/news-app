@@ -17,7 +17,7 @@ class NewsService extends Endpoint {
   static List<NewsModels> _decodeJson(String response) {
     final items = <NewsModels>[];
     final Map<String, dynamic> data = jsonDecode(response);
-    final List<dynamic> result = data['data'];
+    final List<dynamic> result = data['articles'];
     for (final item in result) {
       final news = NewsModels.fromJson(item);
       items.add(news);

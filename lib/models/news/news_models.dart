@@ -6,7 +6,11 @@ part 'news_models.g.dart';
 @freezed
 class NewsModels with _$NewsModels {
   const factory NewsModels({
-    String? news,
+    String? author,
+    String? title,
+    String? description,
+    String? url,
+    String? urlToImage,
   }) = _NewsModels;
 
   factory NewsModels.fromJson(Map<String, dynamic> json) =>

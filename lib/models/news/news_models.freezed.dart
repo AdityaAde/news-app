@@ -20,7 +20,11 @@ NewsModels _$NewsModelsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NewsModels {
-  String? get news => throw _privateConstructorUsedError;
+  String? get author => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
+  String? get urlToImage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +37,12 @@ abstract class $NewsModelsCopyWith<$Res> {
   factory $NewsModelsCopyWith(
           NewsModels value, $Res Function(NewsModels) then) =
       _$NewsModelsCopyWithImpl<$Res>;
-  $Res call({String? news});
+  $Res call(
+      {String? author,
+      String? title,
+      String? description,
+      String? url,
+      String? urlToImage});
 }
 
 /// @nodoc
@@ -46,12 +55,32 @@ class _$NewsModelsCopyWithImpl<$Res> implements $NewsModelsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? news = freezed,
+    Object? author = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? url = freezed,
+    Object? urlToImage = freezed,
   }) {
     return _then(_value.copyWith(
-      news: news == freezed
-          ? _value.news
-          : news // ignore: cast_nullable_to_non_nullable
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      urlToImage: urlToImage == freezed
+          ? _value.urlToImage
+          : urlToImage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -64,7 +93,12 @@ abstract class _$$_NewsModelsCopyWith<$Res>
           _$_NewsModels value, $Res Function(_$_NewsModels) then) =
       __$$_NewsModelsCopyWithImpl<$Res>;
   @override
-  $Res call({String? news});
+  $Res call(
+      {String? author,
+      String? title,
+      String? description,
+      String? url,
+      String? urlToImage});
 }
 
 /// @nodoc
@@ -79,12 +113,32 @@ class __$$_NewsModelsCopyWithImpl<$Res> extends _$NewsModelsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? news = freezed,
+    Object? author = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? url = freezed,
+    Object? urlToImage = freezed,
   }) {
     return _then(_$_NewsModels(
-      news: news == freezed
-          ? _value.news
-          : news // ignore: cast_nullable_to_non_nullable
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      urlToImage: urlToImage == freezed
+          ? _value.urlToImage
+          : urlToImage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -93,17 +147,26 @@ class __$$_NewsModelsCopyWithImpl<$Res> extends _$NewsModelsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NewsModels implements _NewsModels {
-  const _$_NewsModels({this.news});
+  const _$_NewsModels(
+      {this.author, this.title, this.description, this.url, this.urlToImage});
 
   factory _$_NewsModels.fromJson(Map<String, dynamic> json) =>
       _$$_NewsModelsFromJson(json);
 
   @override
-  final String? news;
+  final String? author;
+  @override
+  final String? title;
+  @override
+  final String? description;
+  @override
+  final String? url;
+  @override
+  final String? urlToImage;
 
   @override
   String toString() {
-    return 'NewsModels(news: $news)';
+    return 'NewsModels(author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage)';
   }
 
   @override
@@ -111,13 +174,24 @@ class _$_NewsModels implements _NewsModels {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NewsModels &&
-            const DeepCollectionEquality().equals(other.news, news));
+            const DeepCollectionEquality().equals(other.author, author) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality()
+                .equals(other.urlToImage, urlToImage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(news));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(author),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(urlToImage));
 
   @JsonKey(ignore: true)
   @override
@@ -133,13 +207,26 @@ class _$_NewsModels implements _NewsModels {
 }
 
 abstract class _NewsModels implements NewsModels {
-  const factory _NewsModels({final String? news}) = _$_NewsModels;
+  const factory _NewsModels(
+      {final String? author,
+      final String? title,
+      final String? description,
+      final String? url,
+      final String? urlToImage}) = _$_NewsModels;
 
   factory _NewsModels.fromJson(Map<String, dynamic> json) =
       _$_NewsModels.fromJson;
 
   @override
-  String? get news;
+  String? get author;
+  @override
+  String? get title;
+  @override
+  String? get description;
+  @override
+  String? get url;
+  @override
+  String? get urlToImage;
   @override
   @JsonKey(ignore: true)
   _$$_NewsModelsCopyWith<_$_NewsModels> get copyWith =>
