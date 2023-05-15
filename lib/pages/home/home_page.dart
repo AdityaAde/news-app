@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
+import '../search/search_page.dart';
 import 'blocs/blocs.dart';
 import 'controller/controller.dart';
 import 'widgets/widgets.dart';
@@ -55,7 +56,10 @@ class _HomePageState extends State<HomePage> {
           title: const Text('NEWS'),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () => showSearch(
+                context: context,
+                delegate: SearchNewsPage(),
+              ),
               icon: const Icon(Icons.search),
             ),
           ],

@@ -33,4 +33,32 @@ class NewsRepository {
       return Left(Exception());
     }
   }
+
+  Future<Either<Exception, List<NewsModels>>> getNewsEverything(
+    String? search,
+    String? from,
+    String? to,
+  ) async {
+    try {
+      final result = await _newsService.getNewsEverything(
+        search,
+        from,
+        to,
+      );
+      return Right(result);
+    } on DioError catch (dioError) {
+      switch (dioError.type) {
+        case DioErrorType.connectTimeout:
+        case DioErrorType.receiveTimeout:
+        case DioErrorType.sendTimeout:
+          return Left(Exception('No Connection'));
+        case DioErrorType.response:
+          return Left(Exception('Data Parsing err'));
+        default:
+          return Left(Exception());
+      }
+    } catch (e) {
+      return Left(Exception());
+    }
+  }
 }
