@@ -6,7 +6,7 @@ class SelectedChipController extends ChangeNotifier {
   factory SelectedChipController.create() => SelectedChipController();
 
   int selectedIndex = 0;
-  String selectedCategory = '';
+  String selectedCategory = 'business';
 
   void selectChip(int index, String category) {
     selectedIndex = index;

@@ -14,6 +14,7 @@ class CategoryChipWidget extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Expanded(
       child: ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         scrollDirection: Axis.horizontal,
         itemCount: categoryList.length,
         itemBuilder: (context, i) {

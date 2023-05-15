@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../models/models.dart';
 import 'controller/controller.dart';
-import 'widgets/category_chip_widget.dart';
+import 'widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       value: _selectedChipController,
       child: Scaffold(
         appBar: AppBar(
+          title: const Text('NEWS'),
           actions: [
             IconButton(
               onPressed: () {},
@@ -54,8 +55,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: Consumer<SelectedChipController>(
-          builder: (context, value, _) => Center(
-            child: Text(value.selectedCategory),
+          builder: (context, value, _) => ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) => const NewsCardWidget(),
           ),
         ),
       ),
