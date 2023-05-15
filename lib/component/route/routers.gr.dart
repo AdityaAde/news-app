@@ -11,20 +11,20 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:flutter/material.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i2;
+import 'package:flutter/cupertino.dart' as _i4;
+import 'package:flutter/material.dart' as _i3;
 
-import '../../pages/news_detail/news_detail_page.dart' as _i2;
 import '../../pages/pages.dart' as _i1;
 
-class AppRouter extends _i3.RootStackRouter {
-  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
+class AppRouter extends _i2.RootStackRouter {
+  AppRouter([_i3.GlobalKey<_i3.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i2.PageFactory> pagesMap = {
     HomeRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i2.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.HomePage(),
       );
@@ -39,9 +39,9 @@ class AppRouter extends _i3.RootStackRouter {
                 description: queryParams.optString('description'),
                 author: queryParams.optString('author'),
               ));
-      return _i3.MaterialPageX<dynamic>(
+      return _i2.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i2.NewsDetailPage(
+        child: _i1.NewsDetailPage(
           key: args.key,
           title: args.title,
           urlImage: args.urlImage,
@@ -53,18 +53,18 @@ class AppRouter extends _i3.RootStackRouter {
   };
 
   @override
-  List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig(
+  List<_i2.RouteConfig> get routes => [
+        _i2.RouteConfig(
           '/#redirect',
           path: '/',
           redirectTo: 'home',
           fullMatch: true,
         ),
-        _i3.RouteConfig(
+        _i2.RouteConfig(
           HomeRoute.name,
           path: 'home',
         ),
-        _i3.RouteConfig(
+        _i2.RouteConfig(
           NewsDetailRoute.name,
           path: 'detail-page/:title',
         ),
@@ -73,7 +73,7 @@ class AppRouter extends _i3.RootStackRouter {
 
 /// generated route for
 /// [_i1.HomePage]
-class HomeRoute extends _i3.PageRouteInfo<void> {
+class HomeRoute extends _i2.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -84,8 +84,8 @@ class HomeRoute extends _i3.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.NewsDetailPage]
-class NewsDetailRoute extends _i3.PageRouteInfo<NewsDetailRouteArgs> {
+/// [_i1.NewsDetailPage]
+class NewsDetailRoute extends _i2.PageRouteInfo<NewsDetailRouteArgs> {
   NewsDetailRoute({
     _i4.Key? key,
     required String title,

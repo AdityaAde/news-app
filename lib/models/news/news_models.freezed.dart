@@ -25,6 +25,7 @@ mixin _$NewsModels {
   String? get description => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get urlToImage => throw _privateConstructorUsedError;
+  String? get publishedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $NewsModelsCopyWith<$Res> {
       String? title,
       String? description,
       String? url,
-      String? urlToImage});
+      String? urlToImage,
+      String? publishedAt});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$NewsModelsCopyWithImpl<$Res> implements $NewsModelsCopyWith<$Res> {
     Object? description = freezed,
     Object? url = freezed,
     Object? urlToImage = freezed,
+    Object? publishedAt = freezed,
   }) {
     return _then(_value.copyWith(
       author: author == freezed
@@ -82,6 +85,10 @@ class _$NewsModelsCopyWithImpl<$Res> implements $NewsModelsCopyWith<$Res> {
           ? _value.urlToImage
           : urlToImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      publishedAt: publishedAt == freezed
+          ? _value.publishedAt
+          : publishedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -98,7 +105,8 @@ abstract class _$$_NewsModelsCopyWith<$Res>
       String? title,
       String? description,
       String? url,
-      String? urlToImage});
+      String? urlToImage,
+      String? publishedAt});
 }
 
 /// @nodoc
@@ -118,6 +126,7 @@ class __$$_NewsModelsCopyWithImpl<$Res> extends _$NewsModelsCopyWithImpl<$Res>
     Object? description = freezed,
     Object? url = freezed,
     Object? urlToImage = freezed,
+    Object? publishedAt = freezed,
   }) {
     return _then(_$_NewsModels(
       author: author == freezed
@@ -140,6 +149,10 @@ class __$$_NewsModelsCopyWithImpl<$Res> extends _$NewsModelsCopyWithImpl<$Res>
           ? _value.urlToImage
           : urlToImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      publishedAt: publishedAt == freezed
+          ? _value.publishedAt
+          : publishedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -148,7 +161,12 @@ class __$$_NewsModelsCopyWithImpl<$Res> extends _$NewsModelsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NewsModels implements _NewsModels {
   const _$_NewsModels(
-      {this.author, this.title, this.description, this.url, this.urlToImage});
+      {this.author,
+      this.title,
+      this.description,
+      this.url,
+      this.urlToImage,
+      this.publishedAt});
 
   factory _$_NewsModels.fromJson(Map<String, dynamic> json) =>
       _$$_NewsModelsFromJson(json);
@@ -163,10 +181,12 @@ class _$_NewsModels implements _NewsModels {
   final String? url;
   @override
   final String? urlToImage;
+  @override
+  final String? publishedAt;
 
   @override
   String toString() {
-    return 'NewsModels(author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage)';
+    return 'NewsModels(author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage, publishedAt: $publishedAt)';
   }
 
   @override
@@ -180,7 +200,9 @@ class _$_NewsModels implements _NewsModels {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality()
-                .equals(other.urlToImage, urlToImage));
+                .equals(other.urlToImage, urlToImage) &&
+            const DeepCollectionEquality()
+                .equals(other.publishedAt, publishedAt));
   }
 
   @JsonKey(ignore: true)
@@ -191,7 +213,8 @@ class _$_NewsModels implements _NewsModels {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(urlToImage));
+      const DeepCollectionEquality().hash(urlToImage),
+      const DeepCollectionEquality().hash(publishedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -212,7 +235,8 @@ abstract class _NewsModels implements NewsModels {
       final String? title,
       final String? description,
       final String? url,
-      final String? urlToImage}) = _$_NewsModels;
+      final String? urlToImage,
+      final String? publishedAt}) = _$_NewsModels;
 
   factory _NewsModels.fromJson(Map<String, dynamic> json) =
       _$_NewsModels.fromJson;
@@ -227,6 +251,8 @@ abstract class _NewsModels implements NewsModels {
   String? get url;
   @override
   String? get urlToImage;
+  @override
+  String? get publishedAt;
   @override
   @JsonKey(ignore: true)
   _$$_NewsModelsCopyWith<_$_NewsModels> get copyWith =>

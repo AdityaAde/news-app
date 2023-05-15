@@ -38,7 +38,25 @@ class NewsService extends Endpoint {
     );
     final String data = response.data;
     final result = await compute(_decodeJson, data);
-    debugPrint('clog result $result');
+    return result;
+  }
+
+  Future<List<NewsModels>> getNewsEverything(
+    String? search,
+    String? from,
+  ) async {
+    final url = endpointBaseUrlWithVersion(path: 'everything');
+    final queryParameters = {
+      Keys.search: search ?? 'news',
+      Keys.from: from,
+      Keys.apiKey: Keys.credential,
+    };
+    final response = await _baseService.dio.get(
+      url,
+      queryParameters: queryParameters,
+    );
+    final String data = response.data;
+    final result = await compute(_decodeJson, data);
     return result;
   }
 }
