@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../../widgets/widgets.dart';
 import '../home/widgets/widgets.dart';
@@ -13,11 +14,30 @@ class SearchNewsPage extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
-      IconButton(
-        icon: const Icon(Icons.clear),
-        onPressed: () {
-          query = '';
-        },
+      Row(
+        children: [
+          IconButton(
+            icon: const Icon(Icons.clear),
+            onPressed: () {
+              query = '';
+            },
+          ),
+          IconButton(
+            onPressed: () async {
+              final dateTime = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2010),
+                lastDate: DateTime(2025),
+              );
+              String formattedDate =
+                  DateFormat('yyyy-MM-dd').format(dateTime ?? DateTime(0));
+
+              searchCubit.setDateTime(formattedDate);
+            },
+            icon: const Icon(Icons.calendar_month_outlined),
+          )
+        ],
       ),
     ];
   }

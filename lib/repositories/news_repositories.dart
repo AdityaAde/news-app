@@ -37,13 +37,11 @@ class NewsRepository {
   Future<Either<Exception, List<NewsModels>>> getNewsEverything(
     String? search,
     String? from,
-    String? to,
   ) async {
     try {
       final result = await _newsService.getNewsEverything(
         search,
         from,
-        to,
       );
       return Right(result);
     } on DioError catch (dioError) {

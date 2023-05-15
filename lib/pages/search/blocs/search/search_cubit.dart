@@ -16,9 +16,15 @@ class SearchCubit extends Cubit<SearchState> {
 
   SearchCubit(this._newsRepository) : super(const SearchState.initial());
 
+  String _dateTime = '';
+  String setDateTime(String date) => _dateTime = date;
+
   void getSearchNews({String? search, String? from, String? to}) async {
     emit(const SearchState.loading());
-    final result = await _newsRepository.getNewsEverything(search, from, to);
+    final result = await _newsRepository.getNewsEverything(
+      search,
+      _dateTime,
+    );
     result.fold(
       (l) => emit(SearchState.error(l.toString())),
       (r) => emit(SearchState.success(r)),
