@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/models.dart';
+import 'blocs/blocs.dart';
 import 'controller/controller.dart';
 import 'widgets/widgets.dart';
 
@@ -22,24 +24,31 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final SelectedChipController _selectedChipController;
+  late final NewsCubit _newsCubit;
 
   @override
   void initState() {
     super.initState();
     _selectedChipController = SelectedChipController.create();
+    _newsCubit = NewsCubit.create();
+    _newsCubit.getNewsByCategory(_selectedChipController.selectedCategory);
   }
 
   @override
   void dispose() {
     _selectedChipController.dispose();
+    _newsCubit.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final categoryList = NewsModels.categoryList;
-    return ChangeNotifierProvider.value(
-      value: _selectedChipController,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: _selectedChipController),
+        BlocProvider.value(value: _newsCubit),
+      ],
       child: Scaffold(
         appBar: AppBar(
           title: const Text('NEWS'),

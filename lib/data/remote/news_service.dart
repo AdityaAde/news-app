@@ -29,7 +29,8 @@ class NewsService extends Endpoint {
     final url = endpointBaseUrlWithVersion(path: 'top-headlines');
     final queryParameters = {
       Keys.category: category,
-      Keys.apiKey: Keys.apiKey,
+      Keys.country: 'id',
+      Keys.apiKey: Keys.credential,
     };
     final response = await _baseService.dio.get(
       url,
@@ -37,6 +38,7 @@ class NewsService extends Endpoint {
     );
     final String data = response.data;
     final result = await compute(_decodeJson, data);
+    debugPrint('clog result $result');
     return result;
   }
 }
