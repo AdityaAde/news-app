@@ -75,10 +75,10 @@ flutter_gen:
 flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - assets/images/
-  #   - assets/icons/
-  #   - google_fonts/
+  assets:
+    - assets/images/
+    # - assets/icons/
+    # - google_fonts/
 
   # fonts:
   #   - family: PlusJakartaSans

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/models.dart';
+import '../../widgets/widgets.dart';
 import 'blocs/blocs.dart';
 import 'controller/controller.dart';
 import 'widgets/widgets.dart';
@@ -63,11 +64,30 @@ class _HomePageState extends State<HomePage> {
             child: CategoryChipWidget(categoryList: categoryList),
           ),
         ),
-        body: Consumer<SelectedChipController>(
-          builder: (context, value, _) => ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) => const NewsCardWidget(),
-          ),
+        body: BlocBuilder<NewsCubit, NewsState>(
+          builder: (context, state) {
+            return state.maybeWhen(
+              orElse: () => const SizedBox.shrink(),
+              loading: () => const LoadingWidget(),
+              success: (news) => Consumer<SelectedChipController>(
+                builder: (context, value, _) {
+                  return ListView.builder(
+                    itemCount: news.length,
+                    itemBuilder: (context, i) {
+                      final newsItem = news[i];
+                      return NewsCardWidget(
+                        urlImage: newsItem.urlToImage,
+                        title: newsItem.title,
+                        description: newsItem.description,
+                        author: newsItem.author,
+                      );
+                    },
+                  );
+                },
+              ),
+              error: (err) => Center(child: Text('Something went wront $err')),
+            );
+          },
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../component/theme/theme.dart';
+import '../blocs/blocs.dart';
 import '../controller/controller.dart';
 
 class CategoryChipWidget extends StatelessWidget {
@@ -11,6 +12,7 @@ class CategoryChipWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final newsCubit = context.read<NewsCubit>();
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Expanded(
       child: ListView.builder(
@@ -21,7 +23,10 @@ class CategoryChipWidget extends StatelessWidget {
           return Consumer<SelectedChipController>(
             builder: (context, value, _) => SizedBox(
               child: InkWell(
-                onTap: () => value.selectChip(i, categoryList[i]),
+                onTap: () {
+                  value.selectChip(i, categoryList[i]);
+                  newsCubit.getNewsByCategory(value.selectedCategory);
+                },
                 child: Chip(
                   label: Text(
                     categoryList[i],

@@ -2,9 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../component/theme/theme.dart';
+import '../../../widgets/widgets.dart';
 
 class NewsCardWidget extends StatelessWidget {
-  const NewsCardWidget({super.key});
+  const NewsCardWidget({
+    super.key,
+    this.urlImage,
+    this.title,
+    this.description,
+    this.author,
+  });
+
+  final String? urlImage;
+  final String? title;
+  final String? description;
+  final String? author;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +36,14 @@ class NewsCardWidget extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                    child: Image.network(
-                      'https://picsum.photos/200',
-                      fit: BoxFit.cover,
+                  child: SizedBox(
+                    height: double.infinity,
+                    width: double.infinity,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      child: ImageCachedWidget(url: urlImage ?? ''),
                     ),
                   ),
                 ),
@@ -43,14 +56,14 @@ class NewsCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Atlet PUBG Mobile asal Aceh sumbang emas untuk Indonesia di SEA Games Kamboja',
+                        title ?? '',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: textTheme.titleMedium
                             ?.copyWith(color: AppColor.ink01),
                       ),
                       Text(
-                        'Atlet PUBG Mobile asal Aceh sumbang emas untuk Indonesia di SEA Games Kamboja',
+                        description ?? '',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: textTheme.bodySmall?.copyWith(
@@ -58,7 +71,7 @@ class NewsCardWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'BBC News',
+                        author ?? '',
                         overflow: TextOverflow.ellipsis,
                         style: textTheme.titleMedium
                             ?.copyWith(color: AppColor.ink01),
