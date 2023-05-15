@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                         title: newsItem.title,
                         description: newsItem.description,
                         author: newsItem.author,
+                        publishedAt: newsItem.publishedAt,
                       );
                     },
                   );

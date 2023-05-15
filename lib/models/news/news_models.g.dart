@@ -15,6 +15,7 @@ _$_NewsModels _$$_NewsModelsFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       url: json['url'] as String?,
       urlToImage: json['urlToImage'] as String?,
+      publishedAt: json['publishedAt'] as String?,
     );
 
 Map<String, dynamic> _$$_NewsModelsToJson(_$_NewsModels instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_NewsModelsToJson(_$_NewsModels instance) =>
       'description': instance.description,
       'url': instance.url,
       'urlToImage': instance.urlToImage,
+      'publishedAt': instance.publishedAt,
     };

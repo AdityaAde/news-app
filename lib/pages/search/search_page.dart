@@ -71,6 +71,7 @@ class SearchNewsPage extends SearchDelegate<String> {
                 title: newsItem.title,
                 description: newsItem.description,
                 author: newsItem.author,
+                publishedAt: newsItem.publishedAt,
               );
             },
           ),
@@ -98,6 +99,7 @@ class SearchNewsPage extends SearchDelegate<String> {
                 title: newsItem.title,
                 description: newsItem.description,
                 author: newsItem.author,
+                publishedAt: newsItem.publishedAt,
               );
             },
           ),

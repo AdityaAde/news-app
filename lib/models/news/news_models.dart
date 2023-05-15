@@ -11,6 +11,7 @@ class NewsModels with _$NewsModels {
     String? description,
     String? url,
     String? urlToImage,
+    String? publishedAt,
   }) = _NewsModels;
 
   factory NewsModels.fromJson(Map<String, dynamic> json) =>
