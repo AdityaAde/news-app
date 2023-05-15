@@ -1,4 +1,4 @@
-name: boilerplate_flutter
+name: news_app
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -51,6 +51,7 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   shimmer: ^2.0.0
   timeago: ^3.2.2
+  rename: ^2.1.1
 
 dev_dependencies:
   auto_route_generator: ^4.0.0

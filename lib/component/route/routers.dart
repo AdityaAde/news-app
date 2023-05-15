@@ -5,7 +5,7 @@ import '../../pages/pages.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    HomePage.route,
+    BasePage.route,
   ],
 )
 class $AppRouter {}
