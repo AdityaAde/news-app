@@ -2,7 +2,6 @@ class Environment {
   Environment({
     required this.name,
     required this.baseUrl,
-    required this.authBaseUrl,
     required this.connectionTimeout,
     required this.receiveTimeout,
   });
@@ -11,15 +10,13 @@ class Environment {
   final String baseUrl;
   final int connectionTimeout;
   final int receiveTimeout;
-  final String authBaseUrl;
 
   static late final Environment env;
 
   factory Environment.dev() {
     env = Environment(
       name: 'development',
-      baseUrl: '',
-      authBaseUrl: '',
+      baseUrl: 'https://newsapi.org',
       connectionTimeout: 60000,
       receiveTimeout: 60000,
     );
@@ -29,8 +26,7 @@ class Environment {
   factory Environment.prod() {
     env = Environment(
       name: 'production',
-      baseUrl: '',
-      authBaseUrl: '',
+      baseUrl: 'https://newsapi.org',
       connectionTimeout: 60000,
       receiveTimeout: 60000,
     );
