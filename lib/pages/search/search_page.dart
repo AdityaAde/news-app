@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../widgets/widgets.dart';
+import '../home/widgets/widgets.dart';
+import 'blocs/blocs.dart';
 
 class SearchNewsPage extends SearchDelegate<String> {
-  final List<String> data = [
-    'Apple',
-    'Banana',
-    'Cherry',
-    'Durian',
-    'Elderberry',
-    'Fig',
-    'Grape',
-    'Honeydew',
-  ];
+  final SearchCubit searchCubit;
+
+  SearchNewsPage({required this.searchCubit});
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -36,18 +34,27 @@ class SearchNewsPage extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final filteredList = data
-        .where((item) => item.toLowerCase().contains(query.toLowerCase()))
-        .toList();
+    searchCubit.getSearchNews(search: query);
 
-    return ListView.builder(
-      itemCount: filteredList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(filteredList[index]),
-          onTap: () {
-            close(context, filteredList[index]);
-          },
+    return BlocBuilder<SearchCubit, SearchState>(
+      bloc: searchCubit,
+      builder: (context, state) {
+        return state.maybeWhen(
+          orElse: () => const SizedBox.shrink(),
+          loading: () => const LoadingWidget(),
+          success: (news) => ListView.builder(
+            itemCount: news.length,
+            itemBuilder: (context, i) {
+              final newsItem = news[i];
+              return NewsCardWidget(
+                urlImage: newsItem.urlToImage,
+                title: newsItem.title,
+                description: newsItem.description,
+                author: newsItem.author,
+              );
+            },
+          ),
+          error: (err) => const SizedBox.shrink(),
         );
       },
     );
@@ -55,21 +62,26 @@ class SearchNewsPage extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestionList = query.isEmpty
-        ? data
-        : data
-            .where((item) => item.toLowerCase().contains(query.toLowerCase()))
-            .toList();
-
-    return ListView.builder(
-      itemCount: suggestionList.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(suggestionList[index]),
-          onTap: () {
-            query = suggestionList[index];
-            showResults(context);
-          },
+    searchCubit.getSearchNews(search: query);
+    return BlocBuilder<SearchCubit, SearchState>(
+      bloc: searchCubit,
+      builder: (context, state) {
+        return state.maybeWhen(
+          orElse: () => const SizedBox.shrink(),
+          loading: () => const LoadingWidget(),
+          success: (news) => ListView.builder(
+            itemCount: news.length,
+            itemBuilder: (context, i) {
+              final newsItem = news[i];
+              return NewsCardWidget(
+                urlImage: newsItem.urlToImage,
+                title: newsItem.title,
+                description: newsItem.description,
+                author: newsItem.author,
+              );
+            },
+          ),
+          error: (err) => const SizedBox.shrink(),
         );
       },
     );
