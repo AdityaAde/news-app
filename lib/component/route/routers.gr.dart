@@ -35,12 +35,12 @@ class AppRouter extends _i2.RootStackRouter {
         _i2.RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: '/home',
+          redirectTo: 'home',
           fullMatch: true,
         ),
         _i2.RouteConfig(
           HomeRoute.name,
-          path: '/home',
+          path: 'home',
         ),
       ];
 }
@@ -51,7 +51,7 @@ class HomeRoute extends _i2.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
-          path: '/home',
+          path: 'home',
         );
 
   static const String name = 'HomeRoute';
