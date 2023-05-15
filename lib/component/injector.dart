@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import '../data/local/secure_key_dao.dart';
-import '../data/remote/base_service.dart';
+import '../data/remote/remote.dart';
 import '../extensions/extension.dart';
 import 'dao_storage.dart';
 
@@ -32,6 +32,7 @@ class Injector {
 
   void _onRegisterService() {
     getIt.registerLazySingleton<BaseService>(() => BaseService.create());
+    getIt.registerLazySingleton<NewsService>(() => NewsService.create());
   }
 
   void _onRegisterCache() {

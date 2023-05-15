@@ -1,3 +1,5 @@
+import '../component/keys.dart';
+
 class Environment {
   Environment({
     required this.name,
@@ -16,7 +18,7 @@ class Environment {
   factory Environment.dev() {
     env = Environment(
       name: 'development',
-      baseUrl: 'https://newsapi.org',
+      baseUrl: Keys.baseUrl,
       connectionTimeout: 60000,
       receiveTimeout: 60000,
     );
@@ -26,7 +28,7 @@ class Environment {
   factory Environment.prod() {
     env = Environment(
       name: 'production',
-      baseUrl: 'https://newsapi.org',
+      baseUrl: Keys.baseUrl,
       connectionTimeout: 60000,
       receiveTimeout: 60000,
     );
