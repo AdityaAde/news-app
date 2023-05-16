@@ -24,6 +24,7 @@ class SearchCubit extends Cubit<SearchState> {
     final result = await _newsRepository.getNewsEverything(
       search,
       _dateTime,
+      _dateTime,
     );
     result.fold(
       (l) => emit(SearchState.error(l.toString())),
