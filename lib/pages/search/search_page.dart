@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../widgets/widgets.dart';
-import '../home/widgets/widgets.dart';
 import 'blocs/blocs.dart';
 
 class SearchNewsPage extends SearchDelegate<String> {

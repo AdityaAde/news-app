@@ -44,11 +44,13 @@ class NewsService extends Endpoint {
   Future<List<NewsModels>> getNewsEverything(
     String? search,
     String? from,
+    String? to,
   ) async {
     final url = endpointBaseUrlWithVersion(path: 'everything');
     final queryParameters = {
       Keys.search: search ?? 'news',
       Keys.from: from,
+      Keys.to: to,
       Keys.apiKey: Keys.credential,
     };
     final response = await _baseService.dio.get(
